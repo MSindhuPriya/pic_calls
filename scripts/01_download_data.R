@@ -25,4 +25,4 @@ raw_data <- get_resource(filter(resources, row_number()==3))
 raw_data
 #### Save data ####
 # write the raw data into the raw_data.csv file in the inputs/data folder
-write_csv(raw_data, "inputs/data/raw_data.csv") 
+write_csv(raw_data, "inputs/data/unedited_data.csv") 
