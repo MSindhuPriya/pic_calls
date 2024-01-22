@@ -1,0 +1,13 @@
+---
+title: "A City in Crisis: An Analysis of the Person in Crisis Calls Attended in Toronto From the Year 2014 to 2024"
+author: "Sindhu Priya Mallavarapu"
+format: pdf
+thanks: "Code and data are available at: https://github.com/MSindhuPriya/pic_calls"
+date: today
+date-format: long
+abstract: ""
+number-sections: true
+
+---
+
+## Introduction
