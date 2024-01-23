@@ -1,13 +1,61 @@
 ---
-title: "A City in Crisis: An Analysis of the Person in Crisis Calls Attended in Toronto From the Year 2014 to 2024"
+title: "A City in Crisis? Analyzing Attended Person in Crisis Calls in Toronto From 2014 to 2024"
 author: "Sindhu Priya Mallavarapu"
 format: pdf
 thanks: "Code and data are available at: https://github.com/MSindhuPriya/pic_calls"
 date: today
 date-format: long
-abstract: ""
+abstract: "The Covid-19 pandemic wreacked havoc on the mental health of many across the world. This paper uses a dataset about the types of person in crisis calls that were attended between 2014 and 2024 taken from OpenDataToronto to analyze the effects of the pandemic on the type of attended person in crisis calls. This dataset is analyzed to show that despite the decreasing quality of mental health, there has been no significant increase in overdoses or suicide related crisis calls attended post-pandemic. Though some reasons for this have been suggested in the paper, further study is required to understand this phenomenon."
 number-sections: true
-
+bibliography: references.bib
 ---
 
+```{r}
+#| include: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+library(janitor)
+library(ggplot2)
+library(dplyr)
+```
+
+
 ## Introduction
+
+In 2020, the world faced a global catastrophic event that even three years later, it hasn't fully recovered from. The COVID - 19 pandemic caused many numerous challenges, including challenges with mental health. The years following 2020 were filled with talk about burnout, needing a break, or needing help to deal with the mental load of just day to day living. Social media posts, workplace meetings, and in person conversations tended to revolve around sharing what a negative affect the pandemic had on mental health. It would seem logical than to conclude that if there was such a decline in mental health for the general populace, there would be an increase in overdoses and suicide attempts. However, analyzing the data of attended person in crisis calls in Toronto shows no drastic increases in either of these categories in the attended calls. 
+
+It could seem logical to hypothesize that the reason there is no significant increase in overdose or suicide related calls attended is because there is not enough personnel to attend them. If that were the case, there there should also not be a significant increase in other types of person in crisis calls attended. However, an analysis of the data, as discussed in the Results sections shows that there is a significant increase in general person in crisis calls, but no significant increase in overdose or suicide-related crisis calls. Therefore, a lack of personnel doesn't seem to be the reason for the low overdose or suicide-related calls attended. It is of significance to note that because of social distancing policies, many people were isolated. Thus, if they were overdosing or attempting suicide, it would be hard for others to notice and call in for help. Therefore, it could be that the reason for a lack of significant increase in the overdose and suicide-related category of calls attended is because there was no one around to call. 
+
+In order to perform this analysis, this paper uses data from OpenDataToronto. Specifically, it uses the "Person in Crisis Calls for Service Attended" data. The Data section of this paper goes into more detail about this dataset and the cleaning process. A sample of the cleaned data is shown in Figure 1.1. Also in this paper is the Results section. This section analyses the data and shares any interesting findings. The Discussion section provides suggestions for possible avenues of further study and research on the findings brought out in the Results section. Finally, this paper includes a Conclusion section that summarizes the main insights discussed throughout the paper. 
+
+```{r}
+#| label: sample-clean
+#| fig-cap: Figure 1.1 - A sample of the cleaned data used for analysis
+#| fig-align: center
+#| echo: false
+
+analysis_data <- read.csv(here::here("outputs/data/analysis_data.csv"))
+
+head(analysis_data)
+```
+
+## Data {#data-sec}
+
+The data for this paper is taken from OpenDataToronto (@odtor). Specifically, the dataset used in this paper is called "Person in Crisis Calls for Service Attended" (@data_cite). This dataset is updated quarterly and is managed by the Toronto Police Service. It contains variables such as event_type, event_year, event_month, neighbourhood_158, neighbourhood_140. For the purposes of this paper, only the event_type and event_year variables will be used. The event_type variable contains the following categories: Person in Crisis, Suicide-related, and Overdose. All person in crisis and elopee calls are grouped into the Person in Crisis category. All attempted suicide, jumper, and threatened suicide calls are grouped into the Suicide-related category. Lastly, all overdose calls are in the Overdose category. Additionally, event_year is the variable that records what year the call was made ranging from 2014 to 2024.
+
+Data cleaning and analysis was done using the statistical programming software R (@citeR). Along with that, additional packages such as, tidyverse (@tidy), janitor (@jan), ggplot2 (@gg), knitr (@kr), dplyr (@citedp) were also used. The variable names of the data were cleaned first, and then the two required variables, event_type and event_year, were selected into the data frame. In order to ensure that there are no problems later on in the analysis, all null values were dropped from the data. A contingency table counting the occurance of one variable in relationship to the other is given below in Figure 2.1. This table shows the count of person in crisis, overdose, and suicide-related calls in each year from 2014 to 2024. Further analysis of this data will be done in the following section. 
+
+```{r}
+#| label: fig-2.1
+#| fig-cap: Figure 2.1 - Summarize the variables
+#| echo: false
+#| warning: false
+#| message: false
+
+conting_table <- table(analysis_data)
+
+conting_table
+
+```
