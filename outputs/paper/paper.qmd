@@ -59,3 +59,32 @@ conting_table <- table(analysis_data)
 conting_table
 
 ```
+
+## Results
+
+Since the year 2014 there has been a steady increase in person in crisis, suicide-related, and overdose called attended in Toronto. As is seen in the graph below, there is a spike in person in crisis calls in 2020, but a drop in suicide-related calls. The overdose calls, however, have seen the same steady increase as in the previous years. 
+
+```{r}
+#| label: fig-3.1
+#| fig-cap: Figure 3.1 - Graph the data
+#| echo: false
+
+bp <- barplot(conting_table,
+              xlab = "Year",
+              ylab = "# of Occurances",
+              main = "Change in Type of Person in Crisis Calls Attended from 2014 to 2024",
+              beside = TRUE,
+              ylim = c(0, 23000),
+              legend = rownames(conting_table))
+
+bp
+
+```
+
+## Discussion
+
+## Conclusion
+
+\newpage
+
+## References
