@@ -43,7 +43,9 @@ head(analysis_data)
 
 ## Data {#data-sec}
 
-The data for this paper is taken from OpenDataToronto (@odtor). Specifically, the dataset used in this paper is called "Person in Crisis Calls for Service Attended" (@data_cite). This dataset is updated quarterly and is managed by the Toronto Police Service. It contains variables such as event_type, event_year, event_month, neighbourhood_158, neighbourhood_140. For the purposes of this paper, only the event_type and event_year variables will be used. The event_type variable contains the following categories: Person in Crisis, Suicide-related, and Overdose. All person in crisis and elopee calls are grouped into the Person in Crisis category. All attempted suicide, jumper, and threatened suicide calls are grouped into the Suicide-related category. Lastly, all overdose calls are in the Overdose category. Additionally, event_year is the variable that records what year the call was made ranging from 2014 to 2024.
+The data for this paper is taken from OpenDataToronto (@odtor). Specifically, the dataset used in this paper is called "Person in Crisis Calls for Service Attended" (@data_cite). The decision to use this dataset was made fur to the regular updates that are made to it and the trustworthy source that this data comes from. This dataset is updated quarterly and is sourced by the Toronto Police Service. Another dataset that was under consideration to be used in this paper was the "Mental Health Apprehensions" dataset. This was ulitimately not selected due to the fact that this dataset excluded all crisis calls that were made but didn't end in an apprehension.
+
+The selected dataset contains variables such as event_type, event_year, event_month, neighbourhood_158, neighbourhood_140. For the purposes of this paper, only the event_type and event_year variables will be used. The event_type variable contains the following categories: Person in Crisis, Suicide-related, and Overdose. All person in crisis and elopee calls are grouped into the Person in Crisis category. All attempted suicide, jumper, and threatened suicide calls are grouped into the Suicide-related category. Lastly, all overdose calls are in the Overdose category. Additionally, event_year is the variable that records what year the call was made ranging from 2014 to 2024. 
 
 Data cleaning and analysis was done using the statistical programming software R (@citeR). Along with that, additional packages such as, tidyverse (@tidy), janitor (@jan), ggplot2 (@gg), knitr (@kr), dplyr (@citedp) were also used. The variable names of the data were cleaned first, and then the two required variables, event_type and event_year, were selected into the data frame. In order to ensure that there are no problems later on in the analysis, all null values were dropped from the data. A contingency table counting the occurance of one variable in relationship to the other is given below in Figure 2.1. This table shows the count of person in crisis, overdose, and suicide-related calls in each year from 2014 to 2024. Further analysis of this data will be done in the following section. 
 
@@ -62,24 +64,26 @@ conting_table
 
 ## Results
 
-Since the year 2014 there has been a steady increase in person in crisis, suicide-related, and overdose called attended in Toronto. As is seen in the graph below, there is a spike in person in crisis calls in 2020, but a drop in suicide-related calls. The overdose calls, however, have seen the same steady increase as in the previous years. 
+Since the year 2014 there has been a steady increase in person in crisis, suicide-related, and overdose calls attended in Toronto. As is seen in the graph below, there is a spike in person in crisis calls in 2020, but a drop in suicide-related calls. The overdose calls, however, have seen the same steady increase as in the previous years. It is also of note that there is a significant increase in overdose calls in 2021, but it goes back to pre covid levels in 2022 and then continues with the steady increase in those types of calls that are consistent with years before. Also, after 2020, there is a steady decrease in the general person in crisis category of calls. The suicide-related calls are stable after the year 2020. 
 
 ```{r}
 #| label: fig-3.1
-#| fig-cap: Figure 3.1 - Graph the data
+#| fig-cap: Visualization of change in type of person in crisis calls attended over time.  
 #| echo: false
 
 bp <- barplot(conting_table,
               xlab = "Year",
               ylab = "# of Occurances",
-              main = "Change in Type of Person in Crisis Calls Attended from 2014 to 2024",
+              main = "Change in Type of Crisis Calls Attended from 2014 to 2024",
               beside = TRUE,
               ylim = c(0, 23000),
               legend = rownames(conting_table))
 
-bp
-
 ```
+
+\newpage
+A reason for the spike in the general category of person in crisis calls in 2020 could be explained because of the increased anxiety felt during the pandemic. As the pandemic went on, the overdose calls increased as mental health deteriorated. However, they came back to pre pandemic levels by 2022. Other than these two instances, there were no other abnomal increases in any of the categories. This is very surprising as mental health after 2020 seemed to take a turn for the worse. One reason for the 
+
 
 ## Discussion
 
