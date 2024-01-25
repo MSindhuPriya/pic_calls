@@ -28,7 +28,7 @@ In 2020, the world faced a global catastrophic event that even three years later
 
 It could seem logical to hypothesize that the reason there is no significant increase in overdose or suicide related calls attended is because there is not enough personnel to attend them. If that were the case, there there should also not be a significant increase in other types of person in crisis calls attended. However, an analysis of the data, as discussed in the Results sections shows that there is a significant increase in general person in crisis calls, but no significant increase in overdose or suicide-related crisis calls. Therefore, a lack of personnel doesn't seem to be the reason for the low overdose or suicide-related calls attended. It is of significance to note that because of social distancing policies, many people were isolated. Thus, if they were overdosing or attempting suicide, it would be hard for others to notice and call in for help. Therefore, it could be that the reason for a lack of significant increase in the overdose and suicide-related category of calls attended is because there was no one around to call. 
 
-In order to perform this analysis, this paper uses data from OpenDataToronto. Specifically, it uses the "Person in Crisis Calls for Service Attended" data. The Data section of this paper goes into more detail about this dataset and the cleaning process. A sample of the cleaned data is shown in Figure 1.1. Also in this paper is the Results section. This section analyses the data and shares any interesting findings. The Discussion section provides suggestions for possible avenues of further study and research on the findings brought out in the Results section. Finally, this paper includes a Conclusion section that summarizes the main insights discussed throughout the paper. 
+In order to perform this analysis, this paper uses data from OpenDataToronto. Specifically, it uses the "Person in Crisis Calls for Service Attended" data. The Data section of this paper goes into more detail about this dataset and the cleaning process. A sample of the cleaned data is shown in the table given below. Also in this paper is the Results section. This section analyses the data and shares any interesting findings. The Discussion section provides suggestions for possible avenues of further study and research on the findings brought out in the Results section. Finally, this paper includes a Conclusion section that summarizes the main insights discussed throughout the paper. 
 
 ```{r}
 #| label: sample-clean
@@ -47,7 +47,7 @@ The data for this paper is taken from OpenDataToronto (@odtor). Specifically, th
 
 The selected dataset contains variables such as event_type, event_year, event_month, neighbourhood_158, neighbourhood_140. For the purposes of this paper, only the event_type and event_year variables will be used. The event_type variable contains the following categories: Person in Crisis, Suicide-related, and Overdose. All person in crisis and elopee calls are grouped into the Person in Crisis category. All attempted suicide, jumper, and threatened suicide calls are grouped into the Suicide-related category. Lastly, all overdose calls are in the Overdose category. Additionally, event_year is the variable that records what year the call was made ranging from 2014 to 2024. 
 
-Data cleaning and analysis was done using the statistical programming software R (@citeR). Along with that, additional packages such as, tidyverse (@tidy), janitor (@jan), ggplot2 (@gg), knitr (@kr), dplyr (@citedp) were also used. The variable names of the data were cleaned first, and then the two required variables, event_type and event_year, were selected into the data frame. In order to ensure that there are no problems later on in the analysis, all null values were dropped from the data. A contingency table counting the occurance of one variable in relationship to the other is given below in Figure 2.1. This table shows the count of person in crisis, overdose, and suicide-related calls in each year from 2014 to 2024. Further analysis of this data will be done in the following section. 
+Data cleaning and analysis was done using the statistical programming software R (@citeR). Along with that, additional packages such as, tidyverse (@tidy), janitor (@jan), ggplot2 (@gg), knitr (@kr), dplyr (@citedp) were also used. The variable names of the data were cleaned first, and then the two required variables, event_type and event_year, were selected into the data frame. In order to ensure that there are no problems later on in the analysis, all null values were dropped from the data. A contingency table counting the occurance of one variable in relationship to the other is given in the table below. This table shows the count of person in crisis, overdose, and suicide-related calls in each year from 2014 to 2024.
 
 ```{r}
 #| label: fig-2.1
@@ -74,7 +74,7 @@ Since the year 2014 there has been a steady increase in person in crisis, suicid
 bp <- barplot(conting_table,
               xlab = "Year",
               ylab = "# of Occurances",
-              main = "Change in Type of Crisis Calls Attended from 2014 to 2024",
+              main = "Change in Type of Crisis Calls Attended (2014 - 2024)",
               beside = TRUE,
               ylim = c(0, 23000),
               legend = rownames(conting_table))
@@ -82,12 +82,12 @@ bp <- barplot(conting_table,
 ```
 
 \newpage
-A reason for the spike in the general category of person in crisis calls in 2020 could be explained because of the increased anxiety felt during the pandemic. As the pandemic went on, the overdose calls increased as mental health deteriorated. However, they came back to pre pandemic levels by 2022. Other than these two instances, there were no other abnomal increases in any of the categories. This is very surprising as mental health after 2020 seemed to take a turn for the worse. One reason for the 
+A reason for the spike in the general category of person in crisis calls in 2020 could be explained because of the increased anxiety felt during the pandemic. As the pandemic went on, the overdose calls increased as mental health deteriorated. However, they came back to pre pandemic levels by 2022. Other than these two instances, there were no other abnormal increases in any of the categories. This is very surprising as mental health after 2020 seemed to take a turn for the worse. One reason for the lack of significant rises in overdose or suicide related calls beign attended could be because there was no one to make the call for the person that was in crisis. It could be argued that another reason for this is because there is not enough personnel to attend the overdose or suicide-related calls. If this was the case, the general person in crisis calls attended category should also not have any significant increases. However, as discussed earlier, this is not the case. 
 
 
 ## Discussion
 
-## Conclusion
+The benefits of this dataset is that the data was well maintained and required minimal cleaning. However, the drawback is that it does not measure calls made, but only person in crisis calls attended. It would be beneficial for future papers to look at all calls that were made rather than jsut the calls that were attended.
 
 \newpage
 
